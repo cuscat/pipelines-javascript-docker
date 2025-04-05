@@ -12,6 +12,7 @@ pool:
 variables:
   imageName: 'pipelines-javascript-docker'
 
+
 steps:
 - task: Docker@2
   displayName: Build Docker Image
@@ -19,4 +20,7 @@ steps:
     repository: $(imageName)
     command: build
     Dockerfile: app/Dockerfile
-  
+
+- script: |
+    docker save -o $(Build.ArtifactStagingDirectory)/$(imageName).tar $(imageName):latest
+  displayName: Save the image
