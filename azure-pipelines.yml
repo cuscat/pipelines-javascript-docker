@@ -22,5 +22,9 @@ steps:
     Dockerfile: app/Dockerfile
 
 - script: |
+   docker images
+  displayName: List Docker Images
+
+- script: |
     docker save -o $(Build.ArtifactStagingDirectory)/$(imageName).tar $(imageName):latest
   displayName: Save the image
