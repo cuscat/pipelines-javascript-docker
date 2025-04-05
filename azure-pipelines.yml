@@ -19,9 +19,11 @@ steps:
   inputs:
     repository: $(imageName)
     command: build
+    tags: latest
     Dockerfile: app/Dockerfile
 
 - script: |
+   echo "List Docker Images"
    docker images
   displayName: List Docker Images
 
